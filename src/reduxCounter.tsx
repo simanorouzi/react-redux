@@ -58,6 +58,7 @@ const athenticationSlice = ReduxToolkit.createSlice({
   },
 });
 
+console.log();
 const store = ReduxToolkit.configureStore({
   reducer: {
     counter: counterSlice.reducer,
