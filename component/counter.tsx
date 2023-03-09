@@ -1,17 +1,23 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { stateType } from '../src/reduxCounter';
+import { counterActions, counterStateType } from '../src/reduxCounter';
 
 const counter = () => {
   const dispatch = useDispatch();
-  const counter = useSelector<stateType, number>((state) => state.counter);
+  const counter = useSelector<counterStateType, number>(
+    (state) => state.counterValue
+  );
 
   const IncrementHandler = () => {
-    dispatch({ type: 'Increment' });
+    dispatch(counterActions.increment());
   };
 
   const DecrementHandler = () => {
-    dispatch({ type: 'Decrement' });
+    dispatch(counterActions.decrement());
+  };
+
+  const IncreaseHandler = () => {
+    dispatch(counterActions.increase(10));
   };
 
   return (
@@ -19,6 +25,7 @@ const counter = () => {
       <p>{counter}</p>
       <button onClick={IncrementHandler}>Increment</button>
       <button onClick={DecrementHandler}>Decrement</button>
+      <button onClick={IncreaseHandler}>Increase</button>
     </React.Fragment>
   );
 };
