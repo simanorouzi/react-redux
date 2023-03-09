@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { counterActions, counterStateType } from '../src/reduxCounter';
+import { counterActions, useAppSelector } from '../src/reduxCounter';
 
 const counter = () => {
   const dispatch = useDispatch();
-  const counter = useSelector<counterStateType, number>(
-    (state) => state.counterValue
-  );
+  const counter = useAppSelector((state) => state.counter.counterValue);
 
   const IncrementHandler = () => {
     dispatch(counterActions.increment());
